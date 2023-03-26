@@ -1,5 +1,5 @@
 const fs = require('fs')
-
+const axios = require('axios')
 class ContentController{
     getVideoFragment(req, res) {
         console.log("Startin")      
@@ -47,11 +47,11 @@ class ContentController{
 }
     async saveVideo(req, res)
         {
-            const file = req.file;
-            
-            const filename = file.originalname
+            const file = req.files.file;
+            const filename = req.body.filename;
+            console.log(filename)
 
-            await fs.writeFile(`./RawVideos/${filename}`, file.buffer, (err) => 
+            await fs.writeFile(`./RawVideos/${filename}`, file.data, (err) => 
             {
                 if(err)
                 {
@@ -64,6 +64,13 @@ class ContentController{
                 }
             })
         }
+    async getCommented(req, res)
+    {
+        axios.get('http://localhost:8000/tiflovideo').then((responsefromserver) => {
+            console.log(responsefromserver)
+            res.json(responsefromserver.data)
+        })
+    }
 }
 
 module.exports = new ContentController();
