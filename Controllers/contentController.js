@@ -184,6 +184,7 @@ class ContentController{
                 return console.log(err);
             }
             console.log("The file was saved!");
+            res.status(200).send("ok")
         }); 
     }
 }
