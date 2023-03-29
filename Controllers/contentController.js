@@ -124,7 +124,7 @@ class ContentController{
                 {
                     let form = new FormData();
                     form.append('file', file.data, filename)
-                    axios.post('http://localhost:8000/mp4', form,{ responseType: "stream" }, {
+                    axios.post('http://91.185.86.61:8000/mp4', form,{ responseType: "stream" }, {
                         headers:
                         {
                             'Content-Type': 'video/mp4'
@@ -156,7 +156,7 @@ class ContentController{
         }
     async getCommented(req, res)
     {
-        axios.get('http://localhost:8000/tiflovideo').then((responsefromserver) => {
+        axios.get('http://91.185.86.61:8000/tiflovideo').then((responsefromserver) => {
             //console.log(responsefromserver)
             res.json(responsefromserver.data)
         })
@@ -172,7 +172,7 @@ class ContentController{
         console.log(reslist)
         var realreslist=[]
 
-        reslist.map(x => realreslist.push(JSON.parse(`{"name": ${String('"' + x.replace('.mp3', '') + '"')}, "vidurl": ${'"' + 'http://localhost:8080/video/' + String(x.replace('.mp3', '')) + '"'}, "audurl": ${'"http://localhost:8080/audio/' + String(x.replace('.mp3', '')) + '"'}}`)))
+        reslist.map(x => realreslist.push(JSON.parse(`{"name": ${String('"' + x.replace('.mp3', '') + '"')}, "vidurl": ${'"' + 'http://91.185.86.61:8080/video/' + String(x.replace('.mp3', '')) + '"'}, "audurl": ${'"http://91.185.86.61:8080/audio/' + String(x.replace('.mp3', '')) + '"'}}`)))
 
         res.json(realreslist)
     }
