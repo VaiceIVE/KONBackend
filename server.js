@@ -17,6 +17,7 @@ app.use(cors());
 app.use(express.json())
 app.use(fileUpload());
 app.use('/video',express.static('./RawVideos/'))
+app.use('/audio',express.static('./ProcessedAudio/'))
 app.use(ContentRouter);
 
 
