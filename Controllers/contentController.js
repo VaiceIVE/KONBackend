@@ -172,7 +172,7 @@ class ContentController{
         console.log(reslist)
         var realreslist=[]
 
-        reslist.map(x => realreslist.push(JSON.parse(`{"name": ${String('"' + x.replace('.mp3', '') + '"')}, "vidurl": ${'"' + 'http://91.185.86.61:8080/video/' + String(x.replace('.mp3', '')) + '"'}, "audurl": ${'"http://91.185.86.61:8080/audio/' + String(x.replace('.mp3', '')) + '"'}}`)))
+        reslist.map(x => realreslist.push(JSON.parse(`{"name": ${String('"' + x.replace('.mp3', '') + '"')}, "vidurl": ${'"' + 'http://91.185.86.61:8080/video/' + String(x.replace('.mp3', '.mp4')) + '"'}, "audurl": ${'"http://91.185.86.61:8080/audio/' + String(x.replace('.mp3', '.mp3')) + '"'}}`)))
 
         res.json(realreslist)
     }
